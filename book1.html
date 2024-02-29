@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tourism Website</title>
+</head>
+<style>
+    /* Basic styling for your website */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+#searchBar {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.country-card {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.place-card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.place-card:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Add more specific styling as needed */
+
+</style>
+<body>
+    <header>
+        <h1>Tourism Website</h1>
+        <input type="text" id="searchBar" placeholder="Search for a country">
+    </header>
+    <div id="searchResults">
+        <!-- Search results will be displayed here -->
+    </div>
+    <main>
+        <!-- Country details and tourism places will be displayed here -->
+    </main>
+    <script>
+        // Sample data (replace with a real database)
+const countries = [
+    { name: "Country1", image: "https://c.myholidays.com/blog/blog/content/images/2020/11/Places-To-Visit-In-India.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+    { name: "Country1", image: "country1.jpg", price: "$$$", info: "Country1 is a beautiful place..." },
+
+    // Add more countries here
+];
+
+const tourismPlaces = {
+    "Country1": [
+        { name: "Place1", image: "place1.jpg", price: "$$", info: "Place1 is a famous tourist spot..." },
+        // Add more places for Country1 here
+    ],
+    // Add more countries and places here
+};
+
+// Search functionality
+const searchBar = document.getElementById("searchBar");
+const searchResults = document.getElementById("searchResults");
+
+searchBar.addEventListener("input", function () {
+    const query = searchBar.value.toLowerCase();
+    const results = countries.filter(country => country.name.toLowerCase().includes(query));
+
+    displaySearchResults(results);
+});
+
+function displaySearchResults(results) {
+    searchResults.innerHTML = "";
+
+    results.forEach(result => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+            <img src="${result.image}" alt="${result.name}">
+            <h3>${result.name}</h3>
+            <p>Price: ${result.price}</p>
+            <p>${result.info}</p>
+        `;
+        card.addEventListener("click", () => showCountryDetails(result.name));
+        searchResults.appendChild(card);
+    });
+}
+
+// Display country details and tourism places
+function showCountryDetails(countryName) {
+    const main = document.querySelector("main");
+    main.innerHTML = "";
+
+    const country = countries.find(country => country.name === countryName);
+    if (country) {
+        const countryCard = document.createElement("div");
+        countryCard.className = "country-card";
+        countryCard.innerHTML = `
+            <img src="${country.image}" alt="${country.name}">
+            <h2>${country.name}</h2>
+            <p>Price: ${country.price}</p>
+            <p>${country.info}</p>
+        `;
+        main.appendChild(countryCard);
+
+        const places = tourismPlaces[countryName];
+        if (places) {
+            places.forEach(place => {
+                const placeCard = document.createElement("div");
+                placeCard.className = "place-card";
+                placeCard.innerHTML = `
+                    <img src="${place.image}" alt="${place.name}">
+                    <h3>${place.name}</h3>
+                    <p>Price: ${place.price}</p>
+                    <p>${place.info}</p>
+                `;
+                main.appendChild(placeCard);
+            });
+        }
+    }
+}
+
+    </script>
+</body>
+</html>

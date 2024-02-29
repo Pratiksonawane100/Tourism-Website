@@ -1,0 +1,37 @@
+<!-- booking-history.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking History</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Booking History</h1>
+    
+    <ul id="booking-history-list">
+        <!-- Booking history data will be dynamically populated using JavaScript -->
+    </ul>
+    
+    <a href="index.html">Back to Home</a>
+    
+    <script>
+        // Fetch and display booking history data on the history page
+fetch('/booking-data')
+    .then(response => response.json())
+    .then(data => {
+        const bookingHistoryList = document.getElementById('booking-history-list');
+        
+        data.forEach(booking => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `Place: ${booking.place}, Name: ${booking.name}, Email: ${booking.email}, Check-In: ${booking.checkIn}, Check-Out: ${booking.checkOut}, Guests: ${booking.guests}`;
+            bookingHistoryList.appendChild(listItem);
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    </script>
+</body>
+</html>

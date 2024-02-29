@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="weather1.css"> -->
+</head>
+<style>
+    body{
+    /* background: url(https://wallpaper-house.com/data/out/12/wallpaper2you_484214.jpg); */
+    background: url(https://wallpapers.com/images/hd/weather-background-u3a9sa6qvtm1mo0w.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+.navbar2{
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+.search{
+    position: relative;
+    left: 200px;
+    width: 400px;
+    top: 50px;
+    z-index: 10;
+    border-radius: 11px;
+}
+.search1{
+    position: relative;
+    left: 200px;
+    top: 50px;
+    background-color: white;
+    z-index: 1;
+    border-radius: 10px;
+    z-index: 11;
+}
+.nav1{   
+    margin-left: 20px;
+}
+.glass{
+    position: absolute;
+    left: 320px;
+    top: 100px;
+    width: 900px;
+    height: 600px;
+    background: rgba(255, 255, 255, .1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, .2);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+    /* background-color: aqua; */
+}
+.card{
+    background: none;
+    /* background-color: aqua; */
+}
+.temp10{
+    position: relative;
+    top: 130px;
+    left: 200px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 900;
+}
+.content li{
+    display: flex;
+}
+.city1{
+    position: relative;
+    top: 85px;
+    left: -240px;
+    color: rgb(254, 254, 254);
+}
+.temp3{
+    position: relative;
+    left: 40px;
+    font-size: 90px;
+    color: rgb(255, 255, 255);
+}
+.deg{
+    position: relative;
+    left: 40px;
+    top: -30px;
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+}
+.body{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 60px;
+}
+.body1{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 60px;
+    margin: 25px;
+}
+.body2{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 60px;
+    margin: 25px;
+}
+.body li{
+    color: white;
+}
+.text{
+    color: white;
+}
+.text2{
+    display: flex;
+    justify-content: center;
+}
+.icon{
+    position: absolute;
+    top: 110px;
+    left: 400px;
+    height: 70px;
+}
+</style>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar2">
+            <div class="container-fluid nav1">
+                <a class="navbar-brand" href="/index">Home</a>
+                
+                                                 <!-- <form class="d-flex" role="search">
+                        <input id="city" class="form-control me-2 search" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button class="btn btn-outline-success search1" type="submit" id="Submit">Search</button>
+                    </form> -->
+                
+            </div>
+        </nav>
+    </div>
+
+    <div class="glass card">
+        <form class="d-flex" role="search">
+            <input id="city" class="form-control me-2 search" type="search" placeholder="Search"
+                aria-label="Search">
+            <button class="btn btn-outline-success search1" type="submit" id="Submit">Search</button>
+        </form>
+        <h1 class="city1 my-4 text-sm-center">Weather For <span id="cityname"></span></h1>
+
+        <div class="col card">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3">
+                    <h4 class="my-0 fw-normal temp10">Temperature</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title"><span class="temp3" id="temp2"> </span><small
+                            class="text-body-secondary fw-light"><sup><span class="deg">&#8451;</span></sup></small>
+                    </h1>
+                    <!-- <img class="icon" src="https://cdn-icons-png.flaticon.com/128/2932/2932445.png" alt=""> -->
+                    <ul class="list-unstyled mt-3 mb-4 content">
+                        <div class="body">
+                            <div class="text">
+                                <li>Temprature is </li>
+                                <span class="text2" id="temp"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Min Temperature is </li>
+                                <span class="text2" id="min_temp"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Max Temperature is </li>
+                                <span class="text2" id="max_temp"></span>
+                            </div>
+                            <div class="text">
+                                <li>Cloud PCT is </li>
+                                <span class="text2" id="cloud_pct"></span>
+                            </div>
+                        </div>
+                        <div class="body1">
+                            <div class="text">
+                                <li>Humidity</li>
+                                <span class="text2" id="humidity"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Wind Degrees</li>
+                                <span class="text2" id="wind_degrees"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Sunset Time is</li>
+                                <span class="text2" id="sunset"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Sunrise Time is</li>
+                                <span class="text2" id="sunrise"> </span>
+                            </div>
+                        </div>
+                        <div class="body2">
+                            <div class="text">
+                                <li>Wind speed is</li>
+                                <span class="text2" id="wind_speed"> </span>
+                            </div>
+                            <div class="text">
+                                <li>Feels like</li>
+                                <span class="text2" id="feels_like"> </span>
+                            </div>
+
+                        </div>
+                    </ul>
+                    <!-- <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button> -->
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script>
+        // const url = 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Seattle';
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '058705dfc3msh72488077fc75ba3p14d75djsnfeff4507d7c8',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+};
+const getWeather = (city)=>{
+    cityname.innerHTML = city
+    fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
+    .then(response => response.json())
+    .then((response) => {
+        console.log(response)
+        cloud_pct.innerHTML = response.cloud_pct
+        temp.innerHTML = response.temp
+        temp2.innerHTML = response.temp
+        feels_like.innerHTML = response.feels_like
+        humidity.innerHTML = response.humidity
+        // humidity2.innerHTML = response.humidity
+        min_temp.innerHTML = response.min_temp
+        max_temp.innerHTML = response.max_temp
+        wind_speed.innerHTML = response.wind_speed
+        // wind_speed2.innerHTML = response.wind_speed
+        wind_degrees.innerHTML = response.wind_degrees
+        sunrise.innerHTML = response.sunrise
+        sunset.innerHTML = response.sunset
+    })
+    .catch(err => console.error(err));
+}
+
+Submit.addEventListener("click", (e)=>{
+    e.preventDefault()
+    getWeather(city.value)
+})
+getWeather("Delhi")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script src="https://kit.fontawesome.com/957fa06899.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+  /* Apply some basic styling to the entire page */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* Style the login form container */
+  form {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  /* Style the form elements */
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  /* Style the "Don't have an account" link */
+  a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #6cb3ff;
+    /* background-image: url(to3.jpg); */
+    background-image: url(https://images.unsplash.com/photo-1564648351416-3eec9f3e85de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8a29zdGVubG9zZSUyMGJpbGRlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
+
+  .php {
+    position: absolute;
+    top: -10px;
+    left: 680px;
+    z-index: 10;
+    transition: position 0.3s ease-in;
+    animation: slide-down 0.5s ease;
+  }
+
+  .login-container {
+    background-color: #151E2E;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    animation: slide-up 0.5s ease;
+    height: 600px;
+    width: 400px;
+    border: none;
+    position: relative;
+    left: -250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    /* box-shadow: 0px 0px 10px 6px grey; */
+    box-shadow: 0px 0px 10px grey;
+  }
+
+  .input-field {
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid white;
+    color: white;
+    border-radius: 4px;
+    background-color: #151E2E;
+    border-color: linear-gradient(45deg, #ffcc00, #8f64eb);
+    animation: gradientAnimation 3s ease infinite;
+
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+  .submit-btn {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .user {
+    position: relative;
+    left: -90px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    animation: slide-up 0.5s ease;
+  }
+
+  .login-img {
+    background-image: url(https://images.unsplash.com/photo-1609861517208-e5b7b4cd4b87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80);
+    height: 600px;
+    width: 600px;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    background-size: contain;
+    position: relative;
+    right: -190px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px grey;
+    background-blend-mode: darken;
+    justify-content: center;
+    animation: slide-up 0.5s ease;
+  }
+
+  .login-img::after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.40);
+  }
+
+  .icon {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    align-items: center;
+    position: absolute;
+    top: 550px;
+    left: 450px;
+  }
+
+  .icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+  }
+
+  .text {
+    position: relative;
+    color: white;
+    top: -120px;
+    left: -400px;
+    overflow: none;
+    width: 200px;
+    animation: slide-up 0.5s ease;
+  }
+
+  .small1 {
+    color: white;
+    font-size: 21px;
+    position: relative;
+    left: -395px;
+    top: -150px;
+
+  }
+
+  .wlcm-main {
+    position: relative;
+    top: -50px;
+  }
+
+  .wlcm {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 35px;
+
+  }
+
+  .wlcm1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(45deg, #ffcc00, #5066f4);
+    background-size: 200% 200%;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    animation: gradientAnimation 3s ease infinite;
+    width: 120px;
+  }
+
+  .button:hover::before {
+    transform: translateX(100%);
+  }
+
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+
+  .button:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .foot {
+    position: relative;
+    top: 30px;
+  }
+</style>
+
+<body>
+  <!-- <h1>Login</h1>
+  <form action="/login" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" name="username" required>
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" required>
+    <br>
+    <input type="submit" value="Login">
+  </form>
+  <a href="/register">Don't have an account? Register here.</a>
+  <div class="container"> -->
+
+  <div class="login-img "></div>
+  <div>
+    <div> <small class="small1">Traveller <i class="fa-solid fa-plane-departure"></i></small>
+    </div>
+    <div class="text">
+      <h1>Always Say Yes To New Adventures</h1>
+    </div>
+    <div class="icon icon1">
+      <div><i class="fa-brands fa-facebook fa-2xl"></i></div>
+      <div><i class="fa-brands fa-instagram fa-2xl"></i></div>
+      <div><i class="fa-brands fa-google fa-2xl"></i></div>
+    </div>
+  </div>
+  <div class="login-container">
+
+    <div class="sub-container">
+      <div class="wlcm-main">
+        <h2 class="wlcm">Welcome Back!</h2>
+        <small class="wlcm1">To keep connected with us please login with your personal info</small>
+      </div>
+      <div>
+        <form action="/login" method="POST">
+          <div>
+            <label for="text" class="user"><i class="fa-regular fa-user"></i> Username</label>
+            <input type="text" class="input-field" placeholder="Enter your Username" name="username" required>
+          </div>
+          <div>
+            <label for="text" class="user"><i class="fa-solid fa-lock"></i> Password</label>
+            <input type="password" class="input-field" placeholder="Enter your Password" name="password" required>
+          </div>
+          <button type="submit" class="button">Login</button>
+        </form>
+      </div>
+      <div class="foot">
+        <footer><small>Don't have any account?<a href="/register">Sign up</a></small></footer>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
